@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "CustomExchangeEndpointProxy.Controllers.CustomExchangeEndpointController",
+    "Method": "SendMessage",
+    "RelativePath": "api/CustomExchangeEndpoint/testBotExchange",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CustomExchangeEndpointProxy.Model.Request.ExternalIntegrationBotExchangeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

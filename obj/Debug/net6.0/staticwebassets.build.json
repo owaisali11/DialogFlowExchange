@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "8vReaowxpVEhOv7KEOB6g01oDJWxqDEp6CQhkxM9djM=",
+  "Source": "CustomExchangeEndpointProxy",
+  "BasePath": "_content/CustomExchangeEndpointProxy",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
