@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CustomExchangeEndpointProxy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8da1818b1abc6c1ada111d46426c53a83443b85d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ab248e774f6e61debe2ee1bd96a080ad0b97ad4")]
 [assembly: System.Reflection.AssemblyProductAttribute("CustomExchangeEndpointProxy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CustomExchangeEndpointProxy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

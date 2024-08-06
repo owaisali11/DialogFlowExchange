@@ -4,6 +4,8 @@ namespace CustomExchangeEndpointProxy.Interface
 {
     public interface ICustomExchangeEndpointService
     {
-        Task<DetectIntentResponse> DetectIntentAsync(DetectIntentRequest intentRequest);
+        public SessionsClient InitializeSessionsClient(string jsonKey);
+        Task<DetectIntentResponse> DetectIntentAsync(DetectIntentRequest intentRequest, string jsonKey);
+
     }
 }

@@ -14,20 +14,21 @@ namespace CustomExchangeEndpointProxy.Manager
     public class CustomExchangeManager : ICustomExchangeManager
     {            
         private readonly ILogger<CustomExchangeManager> _logger;
-
+        private readonly ICustomExchangeEndpointService _service;
         /// <summary>
         /// Constructorr
         /// </summary>
-        public CustomExchangeManager(ILogger<CustomExchangeManager> logger)
+        public CustomExchangeManager(ILogger<CustomExchangeManager> logger, ICustomExchangeEndpointService service)
         {
             _logger = logger;
+            _service = service;
         }
         /// <summary>
         /// This method handles json key and project id from endpoint parameters.
         /// </summary>
         /// <param name="botExchangeRequest"></param>
         /// <returns></returns>
-        private (Google.Cloud.Dialogflow.V2.SessionsClient _sessionsClient, string projectid) InitializeParameters(ExternalIntegrationBotExchangeRequest botExchangeRequest)
+        private (string jsonKeyPath, string projectid) InitializeParameters(ExternalIntegrationBotExchangeRequest botExchangeRequest)
         {            
             string jsonKeyPath = null;
             string projectid = null;
@@ -49,10 +50,8 @@ namespace CustomExchangeEndpointProxy.Manager
                 }
             }
             string wrappedJsonkey = "{" + jsonKeyPath + "}";
-            var credentialsProvider = new CustomExchangeEndpointCredentials();
-            var sessionsClient = credentialsProvider.InitializeCredentials(wrappedJsonkey);
             _logger.LogInformation("Parameters initialized successfully.");
-            return (sessionsClient, projectid);
+            return (wrappedJsonkey, projectid);
         }
         /// <summary>
         /// This asynchronous method interacts with a Dialogflow service to
@@ -67,8 +66,7 @@ namespace CustomExchangeEndpointProxy.Manager
             PromptDefinition promptResponse = new();
             PromptSequence promptSequence = new();
             BotSessionState botSessionState = new();
-            var (sessionsClient, projectid) = InitializeParameters(botrequest);
-            var dialogflowservice = new CustomExchangeEndpointService(sessionsClient);          
+            var (jsonKey, projectid) = InitializeParameters(botrequest);
             string sessionId;
                              
             if (botrequest.BotSessionState != null)
@@ -95,7 +93,7 @@ namespace CustomExchangeEndpointProxy.Manager
 
                 var detectIntentRequest = HandleRequest(projectid, botSessionState.SessionID, botrequest, customPayloadString);
 
-                var response = await dialogflowservice.DetectIntentAsync(detectIntentRequest);
+                var response = await _service.DetectIntentAsync(detectIntentRequest, jsonKey);
                 _logger.LogInformation("Received response from Dialogflow: {response}", response);
 
                 var fulfillmentTexts = GetMessageAsync(response.QueryResult.FulfillmentMessages);
