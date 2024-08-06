@@ -1,7 +1,6 @@
 ﻿using CustomExchangeEndpointProxy.Interface;
-using CustomExchangeEndpointProxy.Model.Request;
 using Google.Cloud.Dialogflow.V2;
-using Google.Protobuf.Collections;
+
 
 namespace CustomExchangeEndpointProxy.Client
 {

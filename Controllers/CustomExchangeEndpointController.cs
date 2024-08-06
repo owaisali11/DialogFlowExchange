@@ -1,12 +1,6 @@
 ﻿using CustomExchangeEndpointProxy.Interface;
-using CustomExchangeEndpointProxy.Manager;
-using CustomExchangeEndpointProxy.Model;
 using CustomExchangeEndpointProxy.Model.Request;
-using CustomExchangeEndpointProxy.Model.Response;
-using Google.Cloud.Dialogflow.V2;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace CustomExchangeEndpointProxy.Controllers
 {

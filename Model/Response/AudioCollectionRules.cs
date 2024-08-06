@@ -14,9 +14,13 @@ namespace CustomExchangeEndpointProxy.Model.Response
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public UserInputCollectType collectionType { get; set; }
-        public CollectDtmfRules dtmfRules { get; set; }
-        public PromptBargeConfiguration bargeConfiguration { get; set; }
-        public AudioTranscriptionConfig audioTranscriptionConfig { get; set; }
+        [JsonProperty("collectionType")]
+        public UserInputCollectType CollectionType { get; set; }
+        [JsonProperty("dtmfRules")]
+        public CollectDtmfRules DtmfRules { get; set; }
+        [JsonProperty("bargeConfiguration")]
+        public PromptBargeConfiguration BargeConfiguration { get; set; }
+        [JsonProperty("audioTranscriptionConfig")]
+        public AudioTranscriptionConfig AudioTranscriptionConfig { get; set; }
     }
 }

@@ -1,14 +1,19 @@
-﻿namespace CustomExchangeEndpointProxy.Model
+﻿using Newtonsoft.Json;
+
+namespace CustomExchangeEndpointProxy.Model
 {
     public class ActionRequestResponse
     {
-        public string branchName { get; set; }
-        public Dictionary<string, object> nameValueParameters { get; set; }
+        [JsonProperty("branchName")]
+        public string BranchName { get; set; }
+
+        [JsonProperty("nameValueParameters")]
+        public Dictionary<string, object> NameValueParameters { get; set; }
 
    
         public ActionRequestResponse()
         {
-            nameValueParameters = new Dictionary<string, object>();
+            NameValueParameters = new Dictionary<string, object>();
         }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace CustomExchangeEndpointProxy.Model.Response
+﻿using Newtonsoft.Json;
+
+namespace CustomExchangeEndpointProxy.Model.Response
 {
     public class PromptBargeConfiguration
     {
-        public bool enableSpeakerBarge { get; set; }
+        [JsonProperty("enableSpeakerBarge")]
+        public bool EnableSpeakerBarge { get; set; }
     }
 }

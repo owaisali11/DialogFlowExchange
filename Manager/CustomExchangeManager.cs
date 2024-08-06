@@ -22,6 +22,11 @@ namespace CustomExchangeEndpointProxy.Manager
         {
             _logger = logger;
         }
+        /// <summary>
+        /// This method handles json key and project id from endpoint parameters.
+        /// </summary>
+        /// <param name="botExchangeRequest"></param>
+        /// <returns></returns>
         private (Google.Cloud.Dialogflow.V2.SessionsClient _sessionsClient, string projectid) InitializeParameters(ExternalIntegrationBotExchangeRequest botExchangeRequest)
         {            
             string jsonKeyPath = null;
@@ -122,7 +127,7 @@ namespace CustomExchangeEndpointProxy.Manager
                     {
                         prompts.Add(new PromptDefinition
                         {
-                            transcript = message,
+                            Transcript = message,
                         });
                     }
                 }
@@ -163,7 +168,7 @@ namespace CustomExchangeEndpointProxy.Manager
             {
                 prompts.Add(new PromptDefinition
                 {
-                    mediaSpecificObject = mediaSpecificObject,
+                    MediaSpecificObject = mediaSpecificObject,
                 });
             }
             else
@@ -171,7 +176,7 @@ namespace CustomExchangeEndpointProxy.Manager
                 var customPayloadObject = JObject.Parse(message);
                 prompts.Add(new PromptDefinition
                 {
-                    transcript = intentResponse.QueryResult.FulfillmentText,
+                    Transcript = intentResponse.QueryResult.FulfillmentText,
                 });
 
                 customPayload = JsonConvert.DeserializeObject<Dictionary<string, object>>(customPayloadObject.ToString());
@@ -305,6 +310,12 @@ namespace CustomExchangeEndpointProxy.Manager
             }
             return responses;
         }
+
+        /// <summary>
+        /// This method handles the error  response.
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         private CustomExchangeResponse_V1 ErrorResponse(Exception ex)
         {
             BotSessionState botSessionState = new();
@@ -317,11 +328,11 @@ namespace CustomExchangeEndpointProxy.Manager
                     {
                         new PromptDefinition
                         {
-                            transcript = "The webhook response does not conform to spec.",
-                            base64EncodedG711ulawWithWavHeader = null,
-                            audioFilePath = null,
-                            textToSpeech = null,
-                            mediaSpecificObject = null
+                            Transcript = "The webhook response does not conform to spec.",
+                            Base64EncodedG711ulawWithWavHeader = null,
+                            AudioFilePath = null,
+                            TextToSpeech = null,
+                            MediaSpecificObject = null
                         }
                     }
                 },

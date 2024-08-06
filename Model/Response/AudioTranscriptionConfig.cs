@@ -1,8 +1,13 @@
-﻿namespace CustomExchangeEndpointProxy.Model.Response
+﻿using Newtonsoft.Json;
+
+namespace CustomExchangeEndpointProxy.Model.Response
 {
     public class AudioTranscriptionConfig
     {
-        public string transcriptionProfileId { get; set; }
-        public List<string> hintPhrases { get; set; }
+        [JsonProperty("transcriptionProfileId")]
+        public string TranscriptionProfileId { get; set; }
+
+        [JsonProperty("hintPhrases")]
+        public List<string> HintPhrases { get; set; }
     }
 }

@@ -1,11 +1,22 @@
-﻿namespace CustomExchangeEndpointProxy.Model.Response
+﻿using Newtonsoft.Json;
+
+namespace CustomExchangeEndpointProxy.Model.Response
 {
     public class PromptDefinition
     {
-        public string? transcript { get; set; }
-        public string base64EncodedG711ulawWithWavHeader { get; set; }
-        public string audioFilePath { get; set; }
-        public string textToSpeech { get; set; }
-        public object mediaSpecificObject { get; set; }
+        [JsonProperty("transcript")]
+        public string? Transcript { get; set; }
+
+        [JsonProperty("base64EncodedG711ulawWithWavHeader")]
+        public string Base64EncodedG711ulawWithWavHeader { get; set; }
+
+        [JsonProperty("audioFilePath")]
+        public string AudioFilePath { get; set; }
+
+        [JsonProperty("textToSpeech")]
+        public string TextToSpeech { get; set; }
+
+        [JsonProperty("mediaSpecificObject")]
+        public object MediaSpecificObject { get; set; }
     }
 }
